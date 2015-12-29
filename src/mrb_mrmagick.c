@@ -84,13 +84,13 @@ static mrb_value mrb_mrmagick_rm(mrb_state *mrb, mrb_value self)
 {
   mrb_value ary, val;
 
-  int num_files;
+  int num_files,i;
   char filepath[1024];
 
   mrb_get_args(mrb, "A", &ary);
   num_files = RARRAY_LEN(ary);
   printf("delete Files %d\n", num_files);
-  for ( int i = 0; i < num_files; ++i ) {
+  for ( i = 0; i < num_files; ++i ) {
     val = mrb_ary_ref(mrb, ary, i);
     //mrb_funcall(mrb, mrb_top_self(mrb), "p", 1, val);
     strncpy(filepath, RSTRING_PTR(val), RSTRING_LEN(val));
